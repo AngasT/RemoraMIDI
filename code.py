@@ -35,46 +35,11 @@ packet_buffer = []
 mute_state = [0,0,0,0,0,0,0,0,0,0,0]    #Store mute buttons states as play/pause buttons are separate. Used to prevent mute toggling with repeat button presses when using the play/stop buttons 
 ignore_command = False
 
-mcu = {'REC_RDY_CH1': 0x00,
-       'REC_RDY_CH2': 0x01,
-       'REC_RDY_CH3': 0x02,
-       'REC_RDY_CH4': 0x03,
-       'REC_RDY_CH5': 0x04,
-       'REC_RDY_CH6': 0x05,
-       'REC_RDY_CH7': 0x06,
-       'REC_RDY_CH8': 0x07,
-       'SOLO_CH1': 0x08,
-       'SOLO_CH2': 0x09,
-       'SOLO_CH3': 0x0A,
-       'SOLO_CH4': 0x0B,
-       'SOLO_CH5': 0x0C,
-       'SOLO_CH6': 0x0D,
-       'SOLO_CH7': 0x0E,
-       'SOLO_CH8': 0x0F,
-       'MUTE_CH1': 0x10,
-       'MUTE_CH2': 0x11,
-       'MUTE_CH3': 0x12,
-       'MUTE_CH4': 0x13,
-       'MUTE_CH5': 0x14,
-       'MUTE_CH6': 0x15,
-       'MUTE_CH7': 0x16,
-       'MUTE_CH8': 0x17,
-       'SELECT_CH1': 0x18,
-       'SELECT_CH2': 0x19,
-       'SELECT_CH3': 0x1A,
-       'SELECT_CH4': 0x1B,
-       'SELECT_CH5': 0x1C,
-       'SELECT_CH6': 0x1D,
-       'SELECT_CH7': 0x1E,
-       'SELECT_CH8': 0x1F,
-       'VPOT_SEL_CH1': 0x20,
-       'VPOT_SEL_CH2': 0x21,
-       'VPOT_SEL_CH3': 0x22,
-       'VPOT_SEL_CH4': 0x23,
-       'VPOT_SEL_CH5': 0x24,
-       'VPOT_SEL_CH6': 0x25,
-       'VPOT_SEL_CH7': 0x26,
-       'VPOT_SEL_CH8': 0x27,
+mcu = {'REC_RDY_CH': 0x00,
+       'SOLO_CH': 0x08,
+       'MUTE_CH': 0x10,
+       'SELECT_CH': 0x18,
+       'VPOT_SEL_CH': 0x20,
        'ASSIGN_TRACK': 0x28,
        'ASSIGN_SEND': 0x29,
        'ASSIGN_PAN': 0x2A,
@@ -139,14 +104,7 @@ mcu = {'REC_RDY_CH1': 0x00,
        'SCRUB': 0x65,
        'USER_SWITCH_A': 0x66,
        'USER_SWITCH_B': 0x67,
-       'FADER_TOUCH_CH1': 0x68,
-       'FADER_TOUCH_CH2': 0x69,
-       'FADER_TOUCH_CH3': 0x6A,
-       'FADER_TOUCH_CH4': 0x6B,
-       'FADER_TOUCH_CH5': 0x6C,
-       'FADER_TOUCH_CH6': 0x6D,
-       'FADER_TOUCH_CH7': 0x6E,
-       'FADER_TOUCH_CH8': 0x6F,
+       'FADER_TOUCH_CH': 0x68,
        'FADER_TOUCH_MASTER': 0x70,
        'SMPTE': 0x71,
        'BEATS': 0x72,
@@ -203,51 +161,50 @@ remora_softkeys = {0x10: 'SOFTKEY1',
                   0x27: 'SOFTKEY24',
 }
 
-mapping = {'PLAY_STOP': 'PLAY',
-            'CH_P_BUTTON': 'PLAY',
-            'CH_CUE_BUTTON': 'PLAY',
-            'CH_1_BUTTON': 'PLAY',
-            'CH_2_BUTTON': 'PLAY',
-            'CH_3_BUTTON': 'PLAY',
+mapping = {'PLAY_STOP': 'MUTE_CH',
+            'CH_P_BUTTON': 'REC_RDY_CH',
+            'CH_CUE_BUTTON': 'SOLO_CH',
+            'CH_1_BUTTON': 'SELECT_CH',
+            'CH_2_BUTTON': 'VPOT_SEL_CH',
+            'CH_3_BUTTON': 'FADER_TOUCH_CH',
             'CH_TB_BUTTON': 'PLAY',
             'BRIDGE1': 'PLAY',
             'BRIDGE2': 'STOP',
-            'BRIDGE3': 'PLAY',
-            'BRIDGE4': 'PLAY',
-            'BRIDGE5': 'PLAY',
-            'BRIDGE6': 'PLAY',
-            'BRIDGE7': 'PLAY',
-            'BRIDGE9': 'PLAY',
-            'BRIDGE10': 'PLAY',
-            'BRIDGE11': 'PLAY',
+            'BRIDGE3': 'REWIND',
+            'BRIDGE4': 'FAST_FWD',
+            'BRIDGE5': 'RECORD',
+            'BRIDGE6': 'UP',
+            'BRIDGE7': 'DOWN',
+            'BRIDGE8': 'ENTER',
+            'BRIDGE9': 'LEFT',
+            'BRIDGE10': 'RIGHT',
+            'BRIDGE11': 'UNDO',
+            'BRIDGE12': 'CANCEL',
+            'SOFTKEY1': 'ASSIGN_TRACK',
+            'SOFTKEY2': 'ASSIGN_SEND',
+            'SOFTKEY3': 'ASSIGN_PAN',
+            'SOFTKEY4': 'ASSIGN_PLUGIN',
+            'SOFTKEY5': 'ASSIGN_EQ',
+            'SOFTKEY6': 'ASSIGN_INSTR',
+            'SOFTKEY7': 'CHANNEL_LEFT',
+            'SOFTKEY8': 'CHANNEL_RIGHT',
+            'SOFTKEY9': 'FLIP',
+            'SOFTKEY10': 'GLOBAL_VIEW',
+            'SOFTKEY11': 'NAME_VALUE',
+            'SOFTKEY12': 'SMPTE_BEATS',
+            'SOFTKEY13': 'F1',
+            'SOFTKEY14': 'F2',
+            'SOFTKEY15': 'F3',
+            'SOFTKEY16': 'F4',
+            'SOFTKEY17': 'F5',
+            'SOFTKEY18': 'F6',
+            'SOFTKEY19': 'F7',
+            'SOFTKEY20': 'F8',
+            'SOFTKEY21': 'ENTER',
+            'SOFTKEY22': 'MARKER',
+            'SOFTKEY23': 'BANK_LEFT',
+            'SOFTKEY24': 'BANK_RIGHT',
 }
-#             'BRIDGE12',
-#             'SOFTKEY1',
-#             'SOFTKEY2',
-#             'SOFTKEY3',
-#             'SOFTKEY4',
-#             'SOFTKEY5',
-#             'SOFTKEY6',
-#             'SOFTKEY7',
-#             'SOFTKEY8',
-#             'SOFTKEY9',
-#             'SOFTKEY10',
-#             'SOFTKEY11',
-#             'SOFTKEY12',
-#             'SOFTKEY13',
-#             'SOFTKEY14',
-#             'SOFTKEY15',
-#             'SOFTKEY16',
-#             'SOFTKEY17',
-#             'SOFTKEY18',
-#             'SOFTKEY19',
-#             'SOFTKEY20',
-#             'SOFTKEY21',
-#             'SOFTKEY22',
-#             'SOFTKEY23',
-#             'SOFTKEY24',
-# }
-
 
 while True:
     byte = uart.read(1)
@@ -276,27 +233,36 @@ while True:
                     # master section pots elif device_id 
                 #Buttons
                 if (command == 0xb2) or (command == 0xb3):    
-                    if bus_id == 0x0: #Remora Play/Stop
-                        if (command == 0xb2) and (mute_state[device_id] == 1):
-                            mute_state[device_id] = 0
-                        elif (command == 0xb3) and (mute_state[device_id] == 0):
-                            mute_state[device_id] = 1
-                        else:
-                            ignore_command = True;
-                    #todo
+                    if bus_id <= 0x0E:    
+                        if bus_id == 0x0: #Remora Play/Stop
+                            if (command == 0xb2) and (mute_state[device_id] == 1):
+                                mute_state[device_id] = 0
+                            elif (command == 0xb3) and (mute_state[device_id] == 0):
+                                mute_state[device_id] = 1
+                            else:
+                                ignore_command = True;
+                            
+                        key = (remora_ch[bus_id])
+                        key_map = mapping[key]
+                        print("key: ", key)
+                        print("keymap: ", key_map)
+                        note = mcu[key_map]
+                        note = note + (device_id - 1)  #Add extra offset for channel number
 
                     #Master Section Softkeys
                     elif device_id == 0x1e:
                         key = remora_bridge[bus_id]
+                        key_map = mapping[key]
+                        note = mcu[key_map]
                     #24 Softkeys Panel
                     elif device_id == 0x0e:
                         key = remora_softkeys[bus_id]
+                        key_map = mapping[key]
+                        note = mcu[key_map]
                     else:
                         ignore_command = True
                         
                     if not ignore_command:
-                        key_map = mapping[key]
-                        note = mcu[key_map]
                         midi.send(NoteOn(note))
                         print("sending midi Note:", note)
                         #MIDI controlled software toggles on every NoteOn, rather than turning on with NoteOn and off with NoteOff.
