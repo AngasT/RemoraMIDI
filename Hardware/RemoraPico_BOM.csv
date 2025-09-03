@@ -1,0 +1,7 @@
+"Reference","Qty","Value","Footprint","Datasheet"
+"A1","1","RaspberryPi_Pico","Module:RaspberryPi_Pico_Common_Unspecified","https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf"
+"C1","1","1uF","Capacitor_SMD:C_0603_1608Metric","~"
+"J1","1","DE9_Pins_MountingHoles","Connector_Dsub:DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset7.70mm_Housed_MountingHolesOffset9.12mm","~"
+"R1","1","1K","Resistor_SMD:R_0603_1608Metric","~"
+"R2,R3","2","120R","Resistor_SMD:R_0603_1608Metric","~"
+"U1","1","ISL3176EIUZ-T","10-MSOP","https://www.renesas.com/en/document/dst/isl3170e-isl3171e-isl3172e-isl3173e-isl3174e-isl3175e-isl3176e-isl3177e-isl3178e-datasheet?r=531771"
